@@ -13,7 +13,6 @@ Program execution order
             * Edit exception lists
       3) Run steps (4-5) for the heli plots and html file
 ===========================================================
-
 Main order of programs
       
       1) Edit prestation.cfg
