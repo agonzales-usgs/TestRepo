@@ -34,3 +34,12 @@ Main order of programs
                   * locationexc: change locationIDs for specified station(s) (default is 00)
                   * magnificationexc: change magnitude for specified station(s) (default is 3000.0)
                   
+      2) Run stationNames.py (./stationNames.py)
+            a) Descrip: Calls getMetadata.py to pull metadata from operable stations
+            b) Inputs:  prestation.cfg
+            c) Outputs: stationNames.txt (station names to be used in readStations.py)
+            
+      3) Run readStations.py (./readStations.py)
+            a) Descrip: Reads station config/names and creates/populates a main config file for HeliPlot.py
+            b) 
+                  
