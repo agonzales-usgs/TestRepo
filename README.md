@@ -16,8 +16,7 @@ Program execution order
 Main order of programs
       
       1) Edit prestation.cfg
-            a) Set defualt variables (magnification, resolution, 
-               vertical range, etc.)
+            a) Set defualt variables (magnification, resolution, vertical range, etc.)
             b) 
 
 
