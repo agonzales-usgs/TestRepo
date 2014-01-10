@@ -41,5 +41,16 @@ Main order of programs
             
       3) Run readStations.py (./readStations.py)
             a) Descrip: Reads station config/names and creates/populates a main config file for HeliPlot.py
-            b) 
+            b) Inputs:  prestation.cfg
+                        stationNames.txt
+            c) Outputs: station.cfg
+            
+      4) Run HeliPlot.py (./HeliPlot.py)
+            a) Descrip: Reads station.cfg and creates heli plots for each station, if station 
+                        contains no data we will use nodata.gif as output plot
+            b) Inputs:  station.cfg
+            c) Outputs: OutputPlots/*.png heli plots for each station in stationNames.txt
+            
+      5) Run run_heli_24hr.py (./run_heli_24hr.py)
+            
                   
