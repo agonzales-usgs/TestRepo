@@ -1,6 +1,6 @@
 TestRepo
 ========
-General procedure from start to finish
+Program execution order
 ===========================================================
 
       NOTE: For special circumstances involving only a few user defined stations 
@@ -13,7 +13,6 @@ General procedure from start to finish
             * Edit exception lists
       3) Run steps (4-5) for the heli plots and html file
 
-Program execution order
 ===========================================================
 
       1) Edit prestation.cfg
