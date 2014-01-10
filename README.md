@@ -50,9 +50,8 @@ ASL Java SeedScan Doc
 				* adds scanCfg name and scan object to scans HashTable<String, Scan>
 		7) For each day scan for channel files, 
 			* only process if they have not been scanned
-			* process if changes have occurred to file since last scan.
-			* do for each scan type
-			* do not rescan data for each type
+			* process if changes have occurred to file since last scan
+			* do for each scan type, don't rescan data for each type
 				* launch processes for each scan and use the same data set for each
 			* MetaServer() initialized
 				*
