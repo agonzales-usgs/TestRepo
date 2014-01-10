@@ -52,5 +52,10 @@ Main order of programs
             c) Outputs: OutputPlots/*.png heli plots for each station in stationNames.txt
             
       5) Run run_heli_24hr.py (./run_heli_24hr.py)
+            a) Descrip: Pulls *.png files from OutputPlots/ and creates *.html files for each image
+            b) Inputs:  prestation.cfg (needed for paths)
+                        stationNames.txt
+                        OutputPlots/*.png
+            c) Ouptuts: HeliHTML/*.html
             
                   
