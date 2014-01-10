@@ -1,8 +1,5 @@
 TestRepo
 ========
-
-Test repo for readme structure.
-
 General procedure from start to finish
 ===========================================================
 NOTE: For special circumstances involving only a few
