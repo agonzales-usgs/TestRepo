@@ -17,6 +17,7 @@ Main order of programs
       
       1) Edit prestation.cfg
             a) Set defualt variables (magnification, resolution, vertical range, etc.)
-            b) 
+            b) Set system paths (paths are dependent on the host)
+                  1) getmetadata: exutable contained in HeliPlot/ directory
 
 
