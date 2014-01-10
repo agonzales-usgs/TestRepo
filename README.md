@@ -4,10 +4,10 @@ ASL Java SeedScan Doc
 ========================================
 
 	Order of Operations
-	1) SeedScan.java
-		a) pull config.xml and schemas/SeedScanConfig.xsd (jaxb schema)
+	a) SeedScan.java
+		1) pull config.xml and schemas/SeedScanConfig.xsd (jaxb schema)
 			* Schema file used to verify config file format
-		b) initializes ConfigParser.parseConfig(config.xml)
+		2) initializes ConfigParser.parseConfig(config.xml)
 			* Uses JAXB and JAXBSchema to parse config.xml
 			* config file is read in as a ConfigT() class
 			* ConfigT() gets/sets 
@@ -16,10 +16,15 @@ ASL Java SeedScan Doc
 				(3) ScansT() -> gets list of scans
 				(4) MetaserverT() -> gets/sets remoteUri
 				(5) StationListT() -> gets station list
-		c) initializes MetricDatabase() for reading/writing to DB
+		3) initializes MetricDatabase() for reading/writing to DB
 			* Gets metric data/value
 			* Inserts metric data
-		d) initializes MetricReader() for reading database
+		4) initializes MetricReader() for reading database extends TaskThread()
 			* Extends TaskThread() -> creates LinkedBlockingQueue()
 			* Adds tasks to queue 
 				* Task<T>() -> sets command and data
+			* Runs tasks on multiple threads
+			* Performs tasks to get metric ID, data, value
+				* MetricContext<T>() sets ID extends QueryContext<T>()
+				* MetricValueIdentifier(): ID contains name, station, channel
+		5) initializes MetricInjectory() for injecting into database extends TaskThread()	
