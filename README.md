@@ -26,6 +26,7 @@ ASL Java SeedScan Doc
 				(4) MetaserverT() -> gets/sets remoteUri
 				(5) StationListT() -> gets station list
 		3) initializes MetricDatabase() for reading/writing to DB
+			* initialization includes uri/uname/passwd connection to DB	
 			* Gets metric data/value
 			* Inserts metric data
 		4) initializes MetricReader() for reading database extends TaskThread()
@@ -36,7 +37,10 @@ ASL Java SeedScan Doc
 			* Performs tasks to get metric ID, data, value
 				* MetricContext<T>() sets ID extends QueryContext<T>()
 				* MetricValueIdentifier(): ID contains name, station, channel
-		5) initializes MetricInjectory() for injecting into database extends TaskThread()
+		5) initializes MetricInjector() for injecting into database extends TaskThread()
+			* Extends TaskThread() -> creates LinkedBlockingQueue()
+			* Adds tasks to queue
+				* Task<T>() -> sets command and data
 			* Gets task command/data
 			* Inserts metric data into metricDB
 		6) loops through config scans
@@ -44,20 +48,27 @@ ASL Java SeedScan Doc
 			* configures Scan() object
 				* setPathPattern(scanCfg.getPath())
 				* setDatalessDir(scanCfg.getDatalessDir())
-				* setEventsDir(scanCfg.getEventsDir())
+				* setEventsDir(scanCfg.getEventsDir()) -> /SYNTHETICS/
 				* setPlotsDir(scanCfg.getPlotsDir())
 				* setDaysToScan(scanCfg.getDaysToScan())
 			* Filters network, station, location, channel
-			* Loops through metrics
-				* initializes MetricWrapper()
-				* adds metric argument (ArgumentT()) name and value to wrapper
-				* metrics are in the MetricT() class format
-					* gets/sets className
-					* gets metric argument from List<ArgumentT()>
-					* ArgumentT() gets/sets name and value
-				* adds metric wrapper to scan object
-				* adds scanCfg name and scan object to scans HashTable<String, Scan>
-		7) For each day scan for channel files, 
+				* Filter.addFilter(network, station, location, channel)	
+				* Add filters to scan object
+					* scan.setNetworks(filter)
+					* scan.setStations(filter)
+					* scan.setLocations(filter) ...
+		7) Loops through metrics
+			* initializes MetricWrapper()
+			* adds metric argument (ArgumentT()) name and value to wrapper
+			* metrics are defined by classes in the path: ~/seedscan/src/asl/seedscan/metrics/
+				*
+			* metrics are in the MetricT() class format
+				* gets/sets className
+				* gets metric argument from List<ArgumentT()>
+				* ArgumentT() gets/sets name and value	
+			* adds metric wrapper to scan object
+			* adds scanCfg name and scan object to scans HashTable<String, Scan>
+		8) For each day scan for channel files, 
 			* only process if they have not been scanned
 			* process if changes have occurred to file since last scan
 			* do for each scan type, don't rescan data for each type
