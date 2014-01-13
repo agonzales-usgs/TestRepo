@@ -3,6 +3,12 @@ seedscan
 ASL Java SeedScan Doc
 ========================================
 
+	Fixes
+	1) Logger errors
+		* log4j:WARN No appenders could be found for logger (asl.seedscan.SeedScan).
+		* log4j:WARN Please initialize the log4j system properly.
+		* FIX: mv log4j.properties ~/Documents/seedscan/src/
+
 	Order of Operations
 	a) SeedScan.java
 		1) pull config.xml and schemas/SeedScanConfig.xsd (jaxb schema)
@@ -13,6 +19,9 @@ ASL Java SeedScan Doc
 			* ConfigT() gets/sets 
 				(1) lockfile
 				(2) DatabaseT() -> gets/sets uri, uname, passwd
+					(a) passwd: asldev
+					(b) uri: jdbc:postgresql://136.177.123.35:5432/dataq_dev
+					(c) uname: devwrite
 				(3) ScansT() -> gets list of scans
 				(4) MetaserverT() -> gets/sets remoteUri
 				(5) StationListT() -> gets station list
@@ -54,4 +63,14 @@ ASL Java SeedScan Doc
 			* do for each scan type, don't rescan data for each type
 				* launch processes for each scan and use the same data set for each
 			* MetaServer() initialized
-				*
+				* metaServer = new MetaServer(scan.getDatalessDir())
+			* create Thread readerThread = new Thread(reader)
+				* reader = MetricReader()
+				* reads metrics from metric database
+		
+
+
+
+
+
+
